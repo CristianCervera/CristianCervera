@@ -1,29 +1,73 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import routes from './routes';
 
-Vue.use(VueRouter)
+import { Auth } from '@/api/models';
+import { state, actions } from '@/store';
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: routes(authGuard, guestGuard)
+});
 
-export default router
+export default router;
+
+router.beforeEach(async (to, from, next) => {
+    if (state.token && !state.user) {
+        try {
+            const { data } = await Auth.me();
+            actions.setUser(data[0]);
+        } catch(error) {
+            actions.resetAuth();
+        }
+    }
+
+    next();
+});
+
+function beforeEnter (routes, callback) {
+    return routes.map(route => {
+        return { ...route, beforeEnter: callback };
+    });
+};
+
+function authGuard (routes) {
+    return beforeEnter(routes, (to, from, next) => {
+        if (!state.token) {
+            return next({ name: 'login' });
+        }
+
+        next();
+    });
+};
+
+function guestGuard (routes) {
+    return beforeEnter(routes, (to, from, next) => {
+        if (state.token) {
+            return next({ name: 'home' });
+        }
+
+        next();
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
