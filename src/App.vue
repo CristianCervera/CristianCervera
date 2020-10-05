@@ -1,8 +1,6 @@
 <template>
     <div id="app" class="w-screen h-screen text-gray-900">
-        <Layout class="w-full min-h-full">
-            <router-view/>
-        </Layout>
+        <router-view />
     </div>
 </template>
 
@@ -10,9 +8,6 @@
     import { Layout } from '@/layouts';
 
     export default {
-        name: 'App',
-        components: {
-            Layout
-        }
+        name: 'App'
     };
 </script>

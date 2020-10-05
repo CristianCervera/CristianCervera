@@ -2,7 +2,7 @@
     <div class="w-screen h-screen flex">
         <div class="w-48 px-4 py-4">
             <div class="flex items-center">
-                <img class="w-6" alt="Vue logo" src="@/assets/logo.png">
+                <img class="w-6" alt="Vue logo" src="">
                 <span class="ml-2 text-xl">Base project</span>
             </div>
 

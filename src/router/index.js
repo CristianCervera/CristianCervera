@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
     if (state.token && !state.user) {
         try {
             const { data } = await Auth.me();
-            actions.setUser(data[0]);
+            actions.setUser(data);
         } catch(error) {
             actions.resetAuth();
         }
@@ -37,7 +37,7 @@ function beforeEnter (routes, callback) {
 function authGuard (routes) {
     return beforeEnter(routes, (to, from, next) => {
         if (!state.token) {
-            return next({ name: 'login' });
+            return next({ name: 'Login' });
         }
 
         next();
@@ -47,7 +47,7 @@ function authGuard (routes) {
 function guestGuard (routes) {
     return beforeEnter(routes, (to, from, next) => {
         if (state.token) {
-            return next({ name: 'home' });
+            return next({ name: 'Home' });
         }
 
         next();

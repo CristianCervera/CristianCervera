@@ -63,7 +63,7 @@
         methods: {
             onSuccess(response) {
                 actions.setToken(response.data);
-                this.$router.push({ name: 'home' });
+                this.$router.push({ name: 'Home' });
                 console.log('success', response);
             },
             onError(error) {

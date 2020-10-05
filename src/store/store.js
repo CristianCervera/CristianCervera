@@ -1,12 +1,16 @@
 import Vue from 'vue';
+import { toCookie, toLocal } from './storages';
 
 const store = {
     token: null,
     user: null,
-    employees: []
 };
 
 const state = Vue.observable(store);
+
+toLocal(state, {
+    attrs: ['token']
+});
 
 const actions = {
     setToken(token) {
@@ -18,9 +22,6 @@ const actions = {
     resetAuth() {
         state.token = null;
         state.user = null;
-    },
-    setEmployees(employees) {
-        state.employees = employees;
     }
 };
 
