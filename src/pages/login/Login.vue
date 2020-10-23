@@ -2,8 +2,8 @@
     <div class="w-full h-full flex items-center justify-center bg-gray-200">
         <div>
             <div>
-                <img class="mx-auto w-24" alt="Vue logo" src="@/assets/logo.png">
-                <p class="mt-2 text-sm text-gray-700 text-center leading-tight">Welcome to your Vue.js <br> base project</p>
+                <!-- <img class="mx-auto w-24" alt="Vue logo" src="@/assets/logo.png"> -->
+                <p class="mt-2 text-2xl text-gray-700 text-center leading-tight">Inicie Sesión.</p>
             </div>
 
             <Request
@@ -16,11 +16,11 @@
 
                 <div
                     @keypress.enter="request"
-                    class="mt-6 w-full max-w-xs px-4 py-4 bg-white rounded-lg">
+                    class="mt-2 w-full max-w-xs px-4 py-4 bg-white rounded-lg">
 
                     <label class="block">
                         <p class="text-sm text-gray-600">Email</p>
-                        <input type="email" v-model="form.email" class="mt-1 form-input py-1">
+                        <input type="text" v-model="form.email" class="mt-1 form-input py-1">
                     </label>
 
                     <label class="mt-2 block">
