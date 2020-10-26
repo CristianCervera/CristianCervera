@@ -7,13 +7,33 @@ module.exports = {
     theme: {
        
         scale:{
-            '25':'.25'
+            '25':'.25',
+            '10':'.10'
         },
         extend: {
             colors:{
+                'orange':{
+                    default:'#EC6633',
+                    60: 'rgb(236,102,51,.6)'
+            },
+                'turquoise':{
+                    default:'#5DDBD2',
+                    50:'rgb(93,219,210,.5)'
+                },
+                'purple':{
+                    default:'#B65DDB',
+                    60:'rgb(182,93,219,.6)'
+                },
+                'green':{
+                    default:'#AADC1E',
+                    50: 'rgb(170,220,30,.5)'
+                },
+                'danger':'#F26564',
+                
                 // colores degradado fondo
                 'bgl':'#2D303B',
                 'bgd':'#1B1F2A',
+                ////
 
                 'menu':{
                     default:'#141820',
@@ -26,6 +46,13 @@ module.exports = {
                 }
             },
             height:{
+                'line':'1px',
+                '1/12':'8.333333',
+                '2/3':'66.66666%',
+                '1/2':'50%'
+            },
+            width:{
+                '1/9':'11,1111%',
                 'line':'1px'
             }
         },
@@ -35,7 +62,7 @@ module.exports = {
                 borderRadius: theme('borderRadius.lg'),
                 backgroundColor: theme('colors.input.50'),
                 fontSize: theme('fontSize.sm'),
-                color: theme('colors.button'),
+                color: theme('colors.white'),
                 margin: theme('margin.2'),
                 height: theme('height.10'),
                 '&::placeholder': {
@@ -55,9 +82,14 @@ module.exports = {
            
               },
             },
-          })
+          }),
+        //   fontFamily:{
+        //       'sans':["SegoeUI"]
+        //   }
     },
-    variants: {},
+    variants: {
+        visibility:['hover']
+    },
     plugins: [
 		require('@tailwindcss/custom-forms')
 	],
