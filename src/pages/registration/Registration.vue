@@ -8,12 +8,12 @@
                 <h1 class="text-white text-2xl font-regular text-center mb-4 ">Registro de <br>usuario nuevo.</h1>
                 <form action="" class="w-full flex flex-col">
                    <div class="flex flex-col w-full">
-                       <input type="text" class="form-input border-none  " placeholder="Nombre">
-                       <input type="text" class="form-input border-none " placeholder="Apellidos">
-                       <input type="text" class="form-input border-none " placeholder="Puesto de trabajo" >
-                       <input type="text" class="form-input border-none " placeholder="Email">
-                       <input type="text" class="form-input border-none " placeholder="Contraseña">
-                       <input type="text" class="form-input border-none " placeholder="Confirmar contraseña">
+                       <input type="text" class="form-input border-none m-2  " placeholder="Nombre">
+                       <input type="text" class="form-input border-none m-2" placeholder="Apellidos">
+                       <input type="text" class="form-input border-none m-2" placeholder="Puesto de trabajo" >
+                       <input type="text" class="form-input border-none m-2" placeholder="Email">
+                       <input type="text" class="form-input border-none m-2" placeholder="Contraseña">
+                       <input type="text" class="form-input border-none m-2" placeholder="Confirmar contraseña">
                    </div>
                    <div class="w-full flex justify-center justify-between p-2 ">
                        <div class=" flex justify-between items-center">

@@ -16,14 +16,20 @@ export default (authGuard, guestGuard) => [
             path: '/ticketscreate',
             name: 'TicketsCreate',
             // meta: { layout: 'app' },
-            component: () => import(/* webpackChunkName: "home" */ '@/pages/tickets-create/TicketsCreate')
+            component: () => import(/* webpackChunkName: "home" */ '@/pages/client/tickets-create/TicketsCreate')
         },
         {
            path: '/tickets',
            name: 'Tickets',
            // meta: { layout: 'app' },
-           component: () => import(/* webpackChunkName: "home" */ '@/pages/tickets/Tickets')
-       }
+           component: () => import(/* webpackChunkName: "home" */ '@/pages/client/tickets/Tickets')
+       },
+       {
+          path: '/ticketsadmin',
+          name: 'TicketsAdmin',
+          // meta: { layout: 'app' },
+          component: () => import(/* webpackChunkName: "home" */ '@/pages/admin/tickets/TicketsAdmin')
+      }
     ]),
 
 ...authGuard([

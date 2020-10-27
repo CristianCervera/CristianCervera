@@ -1,8 +1,8 @@
 <template>
     <form action="" class="w-full flex flex-col pt-6 ">
                    <div class="flex flex-col w-full">
-                       <input type="text" class="form-input border-none " placeholder="Nombre">
-                       <input type="text" class="form-input border-none" placeholder="Apellidos">
+                       <input type="text" class="form-input border-none m-2 " placeholder="Nombre">
+                       <input type="text" class="form-input border-none m-2" placeholder="Apellidos">
                       
                    </div>
                    <div class="w-full p-2">
