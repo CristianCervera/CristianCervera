@@ -14,8 +14,7 @@ module.exports = {
             colors:{
                 'orange':{
                     default:'#EC6633',
-                    60: 'rgb(236,102,51,.6)',
-                    30: 'rgb(236,102,51,.3)'
+                    60: 'rgb(236,102,51,.6)'
             },
                 'turquoise':{
                     default:'#5DDBD2',
@@ -43,18 +42,14 @@ module.exports = {
                 'button':'#2A80CC',
                 'input':{
                     default:'#424750',
-                    50:'rgb(66,71,80,.5)',
-                    30:'rgb(66,71,80,.3)'    
+                    50:'rgb(66,71,80,.5)',    
                 }
             },
             height:{
                 'line':'1px',
                 '1/12':'8.333333',
                 '2/3':'66.66666%',
-                '1/2':'50%',
-                '7/12':'58.3333%',
-                '8/12':'66.66666%',
-                '9/12':'75%'
+                '1/2':'50%'
             },
             width:{
                 '1/9':'11,1111%',
@@ -65,15 +60,14 @@ module.exports = {
             default: {
               input: {  
                 borderRadius: theme('borderRadius.lg'),
-                backgroundColor: theme('colors.menu.50'),
+                backgroundColor: theme('colors.input.50'),
                 fontSize: theme('fontSize.sm'),
                 color: theme('colors.white'),
-                // margin: theme('margin.2'),
+                margin: theme('margin.2'),
                 height: theme('height.10'),
                 '&::placeholder': {
                     color: theme('colors.input'),
                 },
-                
               },
               select: {
                 borderRadius: theme('borderRadius.lg'),
@@ -94,9 +88,7 @@ module.exports = {
         //   }
     },
     variants: {
-        visibility:['hover'],
-        backgroundColor:['hover','group-hover'],
-        opacity:['hover','group-hover']
+        visibility:['hover']
     },
     plugins: [
 		require('@tailwindcss/custom-forms')

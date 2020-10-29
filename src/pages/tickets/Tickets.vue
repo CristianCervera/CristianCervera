@@ -1,7 +1,26 @@
 <template>
-     <div class=" h-full w-full flex justify-center flex-col items-center "> 
+    <div class="w-full h-full bg-gradient-to-b from-bgl to-bgd flex flex-row">
+<!--------------------------------------------------------- Menú --------------------------------------------------------------------->
+        <div class="w-1/12 h-full bg-menu p-6 pt-10 flex flex-col justify-between items-center">
+            <div class="flex flex-col items-center justify-between flex-1 min-h-0 pb-6">
+                 <img class="w-10 h-12" src="../../assets/Grupo142.png" alt="">
+                 <div class="flex flex-col items-center pt-8">    
+                    <div class="w-10 h-10 bg-purple rounded-full flex items-center justify-center">
+                        <p class="text-white ">MP</p>
+                        <img src="" alt="">
+                    </div> 
+                    <div class="h-line bg-input w-full mt-6"></div>
+                </div>
+            </div>
+
+            <div class="h-1/12">
+                <button class="w-10 h-10 border-solid border-2 border-button text-white rounded-full text-sm p-2 flex items-center justify-center"><span><i class="mdi mdi-power text-gray-600 text-xl"></i></span></button>
+            </div>
+        </div>
+
+        <div class=" h-full w-full flex justify-center flex-col items-center "> 
            
-            <div class="w-9/12 h-7/12 bg-input-50 rounded-lg shadow-lg relative  ">
+            <div class="w-2/3 h-1/2 bg-input-50 rounded-lg shadow-lg relative  ">
                 <div class=" w-full h-2 -mt-1 flex justify-center">
                     <div class="h-full w-1/3 bg-green rounded-full"></div>
                 </div>
@@ -41,13 +60,13 @@
                                 <div>
                                     <div class="pt-6 pb-4 text-gray-500"> <p>Nombre del Proyecto</p></div>
                                     <div class="text-white "> <p>Asunto del ticket</p></div>
-                                    <div class="text-sm text-gray-600 pt-2"> <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dis lobortis, dapibus molestie nec conubia montes turpis metus Pretium sapien interdum. Lorem ipsum dolor sit amet consectetur adipiscing elit dis lobortis,Hola HOla Lorem ipsum dolor sit amet conse molestie Pretium sapien interdum Pretium sapien interdum  iaculis pharetra diam  </p></div>
+                                    <div class="text-sm text-gray-600 pt-2"> <p>Lorem ipsum dolor sit amet consectetur adipiscing elit dis lobortis, dapibus molestie nec conubia montes turpis metus facilisi odio cras sapien imperdiet justo. Pretium sapien interdum iaculis pharetra diam  </p></div>
                                 </div>
                                 <div class="pt-4 flex">
-                                    <div class="w-16 h-16 bg-input mr-3 rounded-lg"></div>
-                                    <div class="w-16 h-16 bg-input mr-3 rounded-lg"></div>
-                                    <div class="w-16 h-16 bg-input mr-3 rounded-lg"></div>
-                                    <div class="w-16 h-16 bg-input mr-3 rounded-lg"></div>
+                                    <div class="w-12 h-12 bg-input mr-3"></div>
+                                    <div class="w-12 h-12 bg-input mr-3"></div>
+                                    <div class="w-12 h-12 bg-input mr-3"></div>
+                                    <div class="w-12 h-12 bg-input mr-3"></div>
                                 </div>
                             </div>
                         </div>
@@ -57,31 +76,17 @@
                             </div>
                         </div>
                         <!------------- chat ----------------->
-                        <div class="flex flex-1 min-w-0 py-3 flex-col pl-6 pr-4 pb-6 ">
+                        <div class="flex flex-1 min-w-0">
                             <div class="flex">
-                                <div class="w-10 h-10 bg-orange rounded-full flex items-center justify-center">
-                                    <p class="text-white text-xl">DB</p>
+                                <div class="w-12 h-12">
                                     <img src="" alt="">
                                 </div>
-                                <div class="pl-4">
-                                    <p class="text-sm text-white pb-1">Nombre Apellidos </p>
-                                    <p class="text-xs text-gray-600">Sofware Developer</p>
+                                <div>
+                                    <p>Nombre Apellidos </p>
+                                    <p>Sofware Developer</p>
                                 </div>
                             </div>
-                            <div class="w-full h-8/12">
 
-                            </div>
-                            <div class="flex flex-1 min-h-0">
-                                <div class="flex h-full w-11/12 pr-6">
-                                    <textarea name="" id="" cols="30" rows="10" class="w-full bg-bgl rounded-lg placeholder-gray-600 "></textarea>
-                                   
-                                </div>
-                                <div class="h-full w-12 flex items-center">
-                                    <button class="w-full h-12 bg-button rounded-full flex items-center justify-center"> <i class="mdi mdi-send text-white text-xl"></i></button>
-                                </div>
-         
-                            </div>
-                           
                         </div>
                     </div>
                 </div>
@@ -90,9 +95,22 @@
             </div>
         </div>
 
+
+    
+        <!-- <TicketList/> -->
+
+       
+    </div>
+
+
 </template>
 <script>
+import TicketList from '../tickets/TicketList'
+
 export default {
-    name:"TicketCard"
+    name:'Tickets',
+    components:{
+        TicketList
+    }
 }
 </script>
