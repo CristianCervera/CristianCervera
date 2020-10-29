@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 
 import './assets/css/main.css';
-import '@mdi/font/css/materialdesignicons.min.css';
 
 Vue.config.productionTip = false;
 
