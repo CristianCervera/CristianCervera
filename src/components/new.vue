@@ -11,7 +11,7 @@
 
         </div>
 
-        <div class="flex flex-1 min-h-0 flex flex-col">
+        <div v-if="option.title == 'Bautizos'" class="flex flex-1 min-h-0 flex flex-col">
 
             <div class="flex flex-1 min-h-0">
 
@@ -515,10 +515,10 @@ export default {
     },
     methods:{
         closeModal(){
+            this.page = 1;
             this.$emit('closeModal')
         },
         save(){
-            console.log(this.form)
             this.closeModal();
         }
     }

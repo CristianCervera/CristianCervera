@@ -44,10 +44,26 @@
                         title: 'Bautizos',
                         value: 'baptisms'
                     },
-                    // {
-                    //     title: 'Oratorio',
-                    //     value: 'oratory'
-                    // }
+                    {
+                        title: 'Comuniones',
+                        value: 'communions'
+                    },
+                    {
+                        title: 'Confirmaciones',
+                        value: 'confirmations'
+                    },
+                    {
+                        title: 'Bodas',
+                        value: 'weddings'
+                    },
+                    {
+                        title: 'Funerales',
+                        value: 'funerals'
+                    },
+                    {
+                        title: 'Oratorio',
+                        value: 'oratory'
+                    }
                 ],
                 hover: false,
                 optionSelected: false

@@ -14,7 +14,7 @@
                 <span class="text-3xl text-white font-semibold uppercase">{{option.title}}</span>
 
                 <div class="h-12 px-4 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
-                    <span class="text-body font-semibold text-xl">Añadir nuevo</span>
+                    <span class="text-body font-semibold text-xl">Añadir</span>
                 </div>
 
             </div>
