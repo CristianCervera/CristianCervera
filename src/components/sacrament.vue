@@ -5,12 +5,12 @@
         <div class="h-full w-full rounded-lg bg-module flex flex-col justify-start items-center shadow-lg">
 
             <div class="h-32 w-32 rounded-full shadow-lg bg-gradient-to-r from-auxdark to-aux -mt-10 flex flex-col justify-center items-center">
-                <span class="text-4xl font-semibold">{{getLetters()}}</span>
+                <span class="text-4xl font-semibold">{{getLetters(data.name, data.firstName)}}</span>
             </div>
 
             <div class="flex flex-1 min-h-0 flex flex-col justify-center items-center px-2">
-                <span class="text-white font-semibold text-2xl text-center leading-none">Cristian Cervera Perez</span>
-                <span class="text-white font-semibold mt-2">2 Mayo 1991</span>
+                <span class="text-white font-semibold text-2xl text-center leading-none">{{data.name}} {{data.firstName}} {{data.lastName}}}</span>
+                <span class="text-white font-semibold mt-2">{{data.baptismDate | moment('DD MMM YYYY')}}</span>
             </div>
 
         </div>
@@ -24,16 +24,15 @@ export default {
     props:['data', 'selected'],
     data(){
         return{
-            name: 'Cristian',
-            surname: 'Cervera'
+            
         }
     },
     methods:{
-        getLetters(){
-            return this.name.charAt(0) + this.surname.charAt(0)
+        getLetters(name, firstName){
+            return name.charAt(0) + firstName.charAt(0)
         },
         selectOne(){
-            this.$emit('selectOne')   
+            this.$emit('selectOne', this.data)   
         }
     },
     computed:{

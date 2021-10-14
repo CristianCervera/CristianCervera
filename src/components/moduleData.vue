@@ -6,11 +6,11 @@
             <span class="text-white text-xl">Selecciona una opción</span>
         </div>
 
-       <div v-else class="h-full w-full flex flex-col px-6 relative flex-none overflow-hidden">
+       <div v-else-if="option.title != 'Oratorio'" class="h-full w-full flex flex-col px-6 relative flex-none overflow-hidden">
 
             <loader :loading="loading" />
 
-             <div class="h-24 w-full flex flex-row justify-start items-center border-b border-aux">
+            <div class="h-24 w-full flex flex-row justify-start items-center border-b border-aux">
                 <span class="text-3xl text-white font-semibold uppercase">{{option.title}}</span>
 
                 <div class="h-12 px-4 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
@@ -39,25 +39,7 @@
 
                 <div v-if="oneSelected" class="h-full flex flex-1 min-w-0 flex flex-col px-6">
 
-                    <div class="h-32 w-full border-b border-aux flex flex-row justify-start items-center">
-
-                        <div class="h-full flex flex-1 min-w-0 flex-row justify-start items-center truncate">
-                            <span class="text-3xl text-white">Nombre</span>
-                        </div>
-
-                        <div class="h-20 w-20 flex flex-col justify-center items-center ml-auto rounded-lg cursor-pointer hover:bg-aux hover:bg-opacity-25" @click="oneSelected = false">
-                            <i class="mdi mdi-pencil text-3xl text-blue-500"></i>
-                        </div>
-
-                        <div class="h-20 w-20 flex flex-col justify-center items-center ml-2 rounded-lg cursor-pointer hover:bg-aux hover:bg-opacity-25" @click="oneSelected = false">
-                            <i class="mdi mdi-delete text-3xl text-danger"></i>
-                        </div>
-
-                        <div class="h-20 w-20 flex flex-col justify-center items-center ml-2 rounded-lg cursor-pointer hover:bg-aux hover:bg-opacity-25" @click="oneSelected = false">
-                            <i class="mdi mdi-close text-3xl text-aux"></i>
-                        </div>
-
-                    </div>                    
+                    <detail :data="oneSelected" @closeModal="selectOne"/>        
 
                 </div>          
 
@@ -70,6 +52,10 @@
 
         </div>
 
+        <div v-else-if="option.title == 'Oratorio'" class="h-full w-full">
+            <oratory-view />
+        </div>
+
     </div>
 
 </template>
@@ -78,13 +64,17 @@
 import loader from '@/components/loader.vue';
 import newData from '@/components/new.vue';
 import sacrament from '@/components/sacrament.vue';
+import detail from '@/components/detail.vue';
+import oratoryView from '@/components/oratoryView.vue';
 
 export default {
     props:['option'],
     components:{
         loader,
         newData,
-        sacrament
+        sacrament,
+        detail,
+        oratoryView
     },
     data(){
         return{
@@ -97,18 +87,20 @@ export default {
     },
     methods:{
         load(){
-
-            this.loading = true;
-            this.axios.get('/'+this.option.value).then( response => {
-                this.responseData = response.data;
-                this.loading = false;
-            })
+            // this.loading = true;
+            // this.axios.get('/'+this.option.value).then( response => {
+            //     this.responseData = response.data;
+            //     this.loading = false;
+            // })
         },
         closeModal(){
             this.newModal = !this.newModal
+            if(!this.newModal){
+                this.load();
+            }
         },
         selectOne(one){
-            this.oneSelected = true
+            this.oneSelected = one
         }
     },
     computed:{
@@ -120,15 +112,15 @@ export default {
         }
     },
     mounted(){
-        this.load();
+        // this.load();
     }
 }
 </script>
 
 <style>
 
-textarea:focus, input:focus{
-    outline: none;
-}
+    textarea:focus, input:focus{
+        outline: none;
+    }
 
 </style>

@@ -27,6 +27,12 @@ http.interceptors.request.use(
 Vue.use(VueAxios, http);
 Vue.axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 
+const moment = require('moment')
+require('moment/locale/es')
+Vue.use(require('vue-moment'), {moment});
+
+import VCalendar from 'v-calendar';
+Vue.use(VCalendar);
 
 Vue.config.productionTip = false;
 

@@ -11,6 +11,447 @@
 
         </div>
 
+        <div class="flex flex-1 min-h-0 flex flex-col">
+
+            <div class="flex flex-1 min-h-0">
+
+                <div v-if="page == 1" class="h-full w-full flex flex-col">
+
+                    <div class="h-24 flex flex-row justify-center items-center">
+                        <span class="text-white text-3xl font-semibold">Datos del Bautizado</span>
+                    </div>
+
+                    <div class="flex flex-1 min-h-0 flex p-8">
+
+                        <div class="h-full w-full flex flex-col pr-6">
+
+                            <div class="h-12 w-full flex flex-row">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Nombre</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.name" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Primer apellido</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.firstName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Segundo apellido</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.lastName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Sexo</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <select name="dimensionfilter" v-model="form.sex" class="h-full w-full rounded-lg bg-body text-white text-xl">
+                                        <option v-for="(el,index) in geners" :key="index" :value="el.value">{{el.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Fecha de nacimiento</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <div class="h-full w-full rounded-lg bg-body flex flex-row justify-start items-center px-2">
+
+                                       <v-date-picker class="inline-block h-full" v-model="form.birthdate" is-dark color="teal">
+
+                                            <template v-slot="{ inputValue, togglePopover }">
+
+                                                <div class="h-full flex flex-row justify-start items-center">
+
+                                                    <button class="h-full px-4 flex flex-col justify-center items-center" @click="togglePopover()">
+                                                        <i class="mdi mdi-calendar text-2xl text-aux"></i>
+                                                    </button>
+
+                                                    <input :value="inputValue" class="h-full w-full rounded-lg bg-body text-white text-xl" readonly/>
+
+                                                </div>
+
+                                            </template>
+                                        
+                                        </v-date-picker>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Hora de nacimiento</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.birthHour" type="time" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Provincia</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.province" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="h-full w-full flex flex-col pl-6">
+
+                            <div class="h-12 w-full flex flex-row">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Fecha de bautismo</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <div class="h-full w-full rounded-lg bg-body flex flex-row justify-start items-center px-2">
+
+                                       <v-date-picker class="inline-block h-full" v-model="form.baptismDate" is-dark color="teal">
+
+                                            <template v-slot="{ inputValue, togglePopover }">
+
+                                                <div class="h-full flex flex-row justify-start items-center">
+
+                                                    <button class="h-full px-4 flex flex-col justify-center items-center" @click="togglePopover()">
+                                                        <i class="mdi mdi-calendar text-2xl text-aux"></i>
+                                                    </button>
+
+                                                    <input :value="inputValue" class="h-full w-full rounded-lg bg-body text-white text-xl" readonly/>
+
+                                                </div>
+
+                                            </template>
+                                        
+                                        </v-date-picker>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Parroquia de bautismo</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.parochialChurch" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-20">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Barrio</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.neighborhood" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-auto mt-20 flex flex-row justify-center items-center">
+
+                                <span class="text-white text-2xl">Dirección de Nacimiento</span>
+
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-6">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Calle</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.birthAddress.street" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-6">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Número</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.birthAddress.number" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                            <div class="h-12 w-full flex flex-row mt-6">
+                                <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                    <span class="text-white text-2xl mr-4">Puerta</span>
+                                </div>
+                                <div class="h-full flex flex-1 min-w-0">
+                                    <input v-model="form.birthAddress.door" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>                    
+
+                </div>
+
+                <div v-if="page == 2" class="h-full w-full flex flex-col">
+
+                    <div class="h-24 flex flex-row justify-center items-center">
+                        <span class="text-white text-2xl font-semibold">Datos de los Padres</span>
+                    </div>
+
+                    <div class="h-auto flex">
+
+                        <div class="h-full w-full flex flex-col pr-8">
+
+                            <div class="h-24 w-full flex flex-row justify-center items-center">
+                                <span class="text-white text-2xl font-semibold">Datos del Padre</span>
+                            </div>
+
+                            <div class="flex flex flex-1 min-h-0 flex-col">
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Nombre</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.father.name" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Primer apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.father.firstName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Segundo apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.father.lastName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Ciudad de origen</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.father.townOfOrigin" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="h-full w-full flex flex-col pl-8">
+
+                            <div class="h-24 w-full flex flex-row justify-center items-center">
+                                <span class="text-white text-2xl font-semibold">Datos de la Madre</span>
+                            </div>
+
+                            <div class="flex flex flex-1 min-h-0 flex-col">
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Nombre</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.mother.name" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Primer apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.mother.firstName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Segundo apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.mother.lastName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Ciudad de origen</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.mother.townOfOrigin" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex flex-1 min-h-0 flex-col mt-20">
+
+                        <div class="h-full w-1/2 mx-auto">
+
+                            <div class="h-24 flex flex-row justify-center items-center">
+                                <span class="text-white text-2xl font-semibold">Datos de la boda</span>
+                            </div>
+
+                            <div class="flex flex-1 min-h-0 flex-col mt-12">
+
+                                <div class="h-12 w-full flex flex-row">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Ciudad</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.weddingTown" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Parroquia</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.parents.parish" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div v-if="page == 3" class="h-full w-full flex flex-col">
+
+                    <div class="h-24 flex flex-row justify-center items-center">
+                        <span class="text-white text-2xl font-semibold">Datos de los Abuelos</span>
+                    </div>
+
+                    <div class="flex flex-1 min-h-0 flex-col w-1/2 mx-auto">
+
+                        <div class="h-full w-full flex flex-col pr-8">
+
+                            <div class="h-24 w-full flex flex-row justify-center items-center">
+                                <span class="text-white text-2xl font-semibold">Datos del Abuelo</span>
+                            </div>
+
+                            <div class="flex flex flex-1 min-h-0 flex-col">
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Nombre</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandfather.name" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Primer apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandfather.firstName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Segundo apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandfather.lastName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="h-full w-full flex flex-col pl-8">
+
+                            <div class="h-24 w-full flex flex-row justify-center items-center">
+                                <span class="text-white text-2xl font-semibold">Datos de la Abuela</span>
+                            </div>
+
+                            <div class="flex flex flex-1 min-h-0 flex-col">
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Nombre</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandmother.name" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Primer apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandmother.firstName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                                <div class="h-12 w-full flex flex-row mt-12">
+                                    <div class="h-full w-1/3 flex flex-row justify-start items-center">
+                                        <span class="text-white text-2xl mr-4">Segundo apellido</span>
+                                    </div>
+                                    <div class="h-full flex flex-1 min-w-0">
+                                        <input v-model="form.grandparents.grandmother.lastName" type="text" class="h-full ml-auto rounded-lg px-2 text-xl bg-body text-white w-full">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="h-auto py-4 flex flex-row justify-center items-center">
+
+                <div v-if="page > 1" class="h-auto w-32 py-2 flex flex-col justify-center items-center rounded-lg bg-aux cursor-pointer mr-4" @click="page--">
+                    <i class="mdi mdi-arrow-left text-body text-2xl font-semibold"></i>
+                </div>
+
+                <div v-if="page < 3" class="h-auto w-32 py-2 flex flex-col justify-center items-center rounded-lg bg-aux cursor-pointer" @click="page ++">
+                    <i class="mdi mdi-arrow-right text-body text-2xl font-semibold"></i>
+                </div>
+
+                <div v-if="page == 3" class="h-auto w-32 py-2 flex flex-col justify-center items-center rounded-lg bg-aux cursor-pointer" @click="save()">
+                    <span class="text-body font-semibold text-2xl">Guardar</span>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </template>
@@ -18,9 +459,67 @@
 <script>
 export default {
     props:['option'],
+    data(){
+        return{
+            form:{
+                parochialChurch: "string",
+                neighborhood: "string",
+                province: "Valencia",
+                baptismDate: "2021-10-14T14:07:51.360Z",
+                sex: "masc",
+                name: "Cristian",
+                firstName: "Cervera",
+                lastName: "Perez",
+                birthdate: "2021-10-14T14:07:51.360Z",
+                birthHour: "string",
+                birthAddress: {
+                    street: "string",
+                    number: "string",
+                    door: "string"
+                },
+                parents: {
+                    father: {
+                    name: "string",
+                    firstName: "string",
+                    lastName: "string",
+                    townOfOrigin: "string"
+                    },
+                    mother: {
+                    name: "string",
+                    firstName: "string",
+                    lastName: "string",
+                    townOfOrigin: "string"
+                    },
+                    weddingTown: "string",
+                    parish: "string"
+                },
+                grandparents: {
+                    grandfather: {
+                    name: "string",
+                    firstName: "string",
+                    lastName: "string"
+                    },
+                    grandmother: {
+                    name: "string",
+                    firstName: "string",
+                    lastName: "string"
+                    }
+                }
+            },
+            page:1,
+            geners:[
+                {name:'Masculino', value: 'masc'},
+                {name:'Femenino', value: 'fem'}
+            ]
+        }
+    },
     methods:{
         closeModal(){
             this.$emit('closeModal')
+        },
+        save(){
+            console.log(this.form)
+            this.closeModal();
         }
     }
 }

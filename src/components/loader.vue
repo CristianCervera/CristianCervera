@@ -1,6 +1,6 @@
 <template>
     
-    <div class="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center" v-if="loading">
+    <div class="absolute top-0 bg-body bg-opacity-50 left-0 h-full w-full flex flex-col justify-center items-center" v-if="loading">
        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
     
