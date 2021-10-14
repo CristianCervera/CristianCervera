@@ -1,73 +1,48 @@
 <template>
-    <div class="w-full h-full flex items-center justify-center bg-gray-200">
-        <div>
-            <div>
-                <img class="mx-auto w-24" alt="Vue logo" src="@/assets/logo.png">
-                <p class="mt-2 text-sm text-gray-700 text-center leading-tight">Welcome to your Vue.js <br> base project</p>
+
+    <div class="h-full w-full bg-body flex flex-col justify-center items-center">
+
+        <div class="w-1/3 py-6 rounded-lg flex flex-col justify-center items-center shadow-lg bg-module">
+
+            <span class="text-white font-semibold text-5xl">Admin Santiago Apóstol</span>
+        
+            <input class="mt-12 h-16 w-5/6 px-4 text-xl rounded-lg bg-body text-white" type="text" v-model="form.psemail">
+            <input class="mt-4 h-16 w-5/6 px-4 text-xl rounded-lg bg-body text-white" type="password" v-model="form.pspassword">
+
+            <div class="h-16 w-1/2 mt-12 bg-aux rounded-lg shadow-lg flex flex-col justify-center items-center cursor-pointer" @click="login()">
+                <span class="text-3xl text-body font-semibold">Entrar</span>
             </div>
-
-            <Request
-                model="Auth"
-                action="login"
-                :form="form"
-                @success="onSuccess"
-                @error="onError"
-                v-slot="{ request, loading }">
-
-                <div
-                    @keypress.enter="request"
-                    class="mt-6 w-full max-w-xs px-4 py-4 bg-white rounded-lg">
-
-                    <label class="block">
-                        <p class="text-sm text-gray-600">Email</p>
-                        <input type="email" v-model="form.email" class="mt-1 form-input py-1">
-                    </label>
-
-                    <label class="mt-2 block">
-                        <p class="text-sm text-gray-600">Password</p>
-                        <input type="password" v-model="form.password" class="mt-1 form-input py-1">
-                    </label>
-
-                    <div class="mt-4">
-                        <button
-                            @click="request"
-                            class="w-full px-4 py-1 bg-indigo-500 font-medium text-indigo-100 rounded-lg"
-                            :class="{ 'opacity-50': loading }"
-                            :disabled="loading">
-                            Login
-                        </button>
-                    </div>
-                </div>
-            </Request>
+        
         </div>
+
+        <div v-if="error" class="h-20 w-1/3 -mb-20 flex flex-row justify-center items-center bg-danger bg-opacity-25 rounded-b-lg">
+            <span class="text-danger text-2xl font-semibold">{{error}}</span>
+        </div>
+
     </div>
+
 </template>
 
 <script>
-    import { Request } from '@/api/components';
     import { actions } from '@/store';
 
     export default {
-        name: 'Login',
+        name: 'Login',  
         components: {
-            Request
         },
         data() {
             return {
                 form: {
-                    email: '',
-                    password: ''
-                }
+                    psemail: '',
+                    pspassword: ''
+                },
+                error: false
             };
         },
         methods: {
-            onSuccess(response) {
-                actions.setToken(response.data);
-                this.$router.push({ name: 'Home' });
-                console.log('success', response);
-            },
-            onError(error) {
-                console.log('failed', error);
+            login(){
+                actions.setToken('asd');
+                this.$router.push( { name:'Home' } )
             }
         }
     }

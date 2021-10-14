@@ -1,21 +1,66 @@
 <template>
-    <div class="w-full h-full px-6 py-4">
-        <h1 class="text-2xl font-medium">Home</h1>
+    
+    <div class="h-full w-full bg-body flex flex-row justify-center items-center p-10 overflow-hidden">
 
-        <h3 class="font-medium">Usuario</h3>
-        {{ user }}
+        <div class="h-full w-2/12 mr-4">
+
+            <div class="h-93 rounded-lg w-full bg-module flex flex-col justify-center items-center relative px-4">
+
+                <div class="h-32 w-32 rounded-full shadow border-2 border-aux" :style="'background-image: url(/img/profile.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;'"></div>
+                <span class="text-3xl text-white font-semibold text-center leading-none mt-6">Vicente Carrascosa</span>
+
+            </div>
+
+            <div class="h-auto rounded-lg bg-module mt-4 overflow-hidden">
+                <div v-for="(el,index) in optionsMenu" :key="index" class="w-full border-b border-body p-6 flex flex-row justify-start items-center" :class="{'bg-box': hover || optionSelected == el}" @mouseover="hover = true" @mouseleave="hover = false" @click="selectOption(el)">
+                    <span class="text-white text-2xl font-semibold uppercase">{{el.title}}</span>
+                    <i v-if="hover || optionSelected == el" class="mdi mdi-arrow-right text-xl text-aux ml-auto"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="h-full w-10/12 rounded-lg overflow-hidden">
+            <module-data :option="optionSelected"/>
+        </div>
+
     </div>
+
 </template>
 
 <script>
-    import { state } from '@/store';
+    import { state, actions } from '@/store';
+    import moduleData from '@/components/moduleData.vue';
 
     export default {
         name: 'Home',
+        components:{
+            moduleData
+        },
+        data(){
+            return{
+                optionsMenu:[
+                    {
+                        title: 'Bautizos',
+                        value: 'baptisms'
+                    }
+                ],
+                hover: false,
+                optionSelected: false
+            }
+        },
+        methods:{
+            selectOption(option){
+                this.optionSelected = option;
+            }
+        },
         computed: {
             user() {
                 return state.user;
             },
+        },
+        mounted(){
+            this.load();
         }
     }
 </script>

@@ -12,7 +12,7 @@ export default (authGuard, guestGuard) => [
         {
             path: '/',
             name: 'Home',
-            // meta: { layout: 'app' },
+            // meta: { layout: 'fullscreen' },
             component: () => import(/* webpackChunkName: "home" */ '@/pages/home')
         },
     ])

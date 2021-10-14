@@ -15,18 +15,18 @@ const router = new VueRouter({
 
 export default router;
 
-router.beforeEach(async (to, from, next) => {
-    if (state.token && !state.user) {
-        try {
-            const { data } = await Auth.me();
-            actions.setUser(data);
-        } catch(error) {
-            actions.resetAuth();
-        }
-    }
+// router.beforeEach(async (to, from, next) => {
+//     if (state.token && !state.user) {
+//         try {
+//             const { data } = await Auth.me();
+//             actions.setUser(data);
+//         } catch(error) {
+//             actions.resetAuth();
+//         }
+//     }
 
-    next();
-});
+//     next();
+// });
 
 function beforeEnter (routes, callback) {
     return routes.map(route => {
