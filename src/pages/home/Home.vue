@@ -12,7 +12,7 @@
             </div>
 
             <div class="h-auto rounded-lg bg-module mt-4 overflow-hidden">
-                <div v-for="(el,index) in optionsMenu" :key="index" class="w-full border-b border-body p-6 flex flex-row justify-start items-center" :class="{'bg-box': optionSelected == el}" @click="selectOption(el)">
+                <div v-for="(el,index) in optionsMenu" :key="index" class="w-full border-b border-body p-6 flex flex-row justify-start items-center cursor-pointer" :class="{'bg-box': optionSelected == el}" @click="selectOption(el)">
                     <span class="text-white text-2xl font-semibold uppercase">{{el.title}}</span>
                     <i v-if="optionSelected == el" class="mdi mdi-arrow-right text-xl text-aux ml-auto"></i>
                 </div>
