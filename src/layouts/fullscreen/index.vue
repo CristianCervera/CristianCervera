@@ -6,8 +6,8 @@
 
             <span class="text-lg text-white font-semibold">Admin Santiago Apóstol</span>
 
-            <div class="h-12 w-12 rounded-full ml-auto hover:bg-danger hover:bg-opacity-25 flex flex-col justify-center items-center cursor-pointer" @click="logout()">
-                <i class="mdi mdi-power text-danger text-3xl"></i>
+            <div class="h-8 w-8 rounded-full ml-auto hover:bg-danger hover:bg-opacity-25 flex flex-col justify-center items-center cursor-pointer" @click="logout()">
+                <i class="mdi mdi-power text-danger text-xl"></i>
             </div>
 
         </div>

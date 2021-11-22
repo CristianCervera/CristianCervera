@@ -10,23 +10,23 @@
 
             <loader :loading="loading" />
 
-            <div class="h-24 w-full flex flex-row justify-start items-center border-b border-aux">
-                <span class="text-3xl text-white font-semibold uppercase">{{option.title}}</span>
+            <div class="h-20 w-full flex flex-row justify-start items-center border-b border-aux">
+                <span class="text-2xl text-white font-semibold uppercase">{{option.title}}</span>
 
-                <div class="h-12 px-4 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
-                    <span class="text-body font-semibold text-xl">Añadir</span>
+                <div class="h-10 px-4 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
+                    <span class="text-body font-semibold text-lg">Añadir</span>
                 </div>
 
             </div>
 
-            <div class="h-16 w-full bg-body bg-opacity-50 flex flex-row justify-start items-center">
+            <div class="h-12 w-full bg-body bg-opacity-50 flex flex-row justify-start items-center">
 
-                <div class="h-full w-16 flex flex-col justify-center items-center">
+                <div class="h-full w-auto px-4 flex flex-col justify-center items-center">
                     <i class="mdi mdi-magnify text-white text-2xl"></i>
                 </div>
 
                 <div class="h-full flex flex-1 min-w-0">
-                    <input type="text" v-model="searchInput" placeholder="Buscar..." class="h-full w-full bg-transparent text-xl text-white px-6">
+                    <input type="text" v-model="searchInput" placeholder="Buscar..." class="h-full w-full bg-transparent text-lg text-white px-2">
                 </div>
 
             </div>
@@ -112,7 +112,7 @@ export default {
         }
     },
     mounted(){
-        // this.load();
+        this.load();
     }
 }
 </script>
