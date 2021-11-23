@@ -48,22 +48,22 @@
                         title: 'Bautizos',
                         value: 'baptisms'
                     },
-                    // {
-                    //     title: 'Comuniones',
-                    //     value: 'communions'
-                    // },
-                    // {
-                    //     title: 'Confirmaciones',
-                    //     value: 'confirmations'
-                    // },
-                    // {
-                    //     title: 'Bodas',
-                    //     value: 'weddings'
-                    // },
-                    // {
-                    //     title: 'Funerales',
-                    //     value: 'funerals'
-                    // },
+                    {
+                        title: 'Comuniones',
+                        value: 'communions'
+                    },
+                    {
+                        title: 'Confirmaciones',
+                        value: 'confirmations'
+                    },
+                    {
+                        title: 'Bodas',
+                        value: 'weddings'
+                    },
+                    {
+                        title: 'Funerales',
+                        value: 'funerals'
+                    },
                     // {
                     //     title: 'Oratorio',
                     //     value: 'oratory'
