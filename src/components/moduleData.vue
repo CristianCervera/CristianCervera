@@ -3,23 +3,23 @@
     <div class="h-full w-full bg-box flex-none overflow-hidden">
 
         <div v-if="!option" class="h-full w-full flex flex-col justify-center items-center">
-            <span class="text-white text-xl">Selecciona una opción</span>
+            <span class="text-white text-lg">Selecciona una opción</span>
         </div>
 
-       <div v-else-if="option.title != 'Oratorio'" class="h-full w-full flex flex-col px-6 relative flex-none overflow-hidden">
+       <div v-else-if="option.title != 'Oratorio'" class="h-full w-full flex flex-col p-4 relative flex-none overflow-hidden">
 
             <loader :loading="loading" />
 
-            <div class="h-20 w-full flex flex-row justify-start items-center border-b border-aux">
-                <span class="text-2xl text-white font-semibold uppercase">{{option.title}}</span>
+            <div class="h-16 w-full flex flex-row justify-start items-center border-b border-aux">
+                <span class="text-xl text-white font-semibold uppercase">{{option.title}}</span>
 
-                <div class="h-10 px-4 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
-                    <span class="text-body font-semibold text-lg">Añadir</span>
+                <div class="h-auto p-2 flex flex-col justify-center items-center ml-auto bg-aux rounded-lg cursor-pointer" @click="newModal = !newModal">
+                    <span class="text-body font-semibold text-sm">Añadir</span>
                 </div>
 
             </div>
 
-            <div class="h-12 w-full bg-body bg-opacity-50 flex flex-row justify-start items-center">
+            <div class="h-10 w-full bg-body bg-opacity-50 flex flex-row justify-start items-center">
 
                 <div class="h-full w-auto px-4 flex flex-col justify-center items-center">
                     <i class="mdi mdi-magnify text-white text-2xl"></i>
@@ -33,8 +33,8 @@
 
             <div class="flex-1 min-h-0 overflow-hidden flex flex-row py-6 w-full">
 
-                <div class="h-full overflow-auto flex flex-wrap" :class="{'w-full': !oneSelected, 'w-93': oneSelected}">
-                    <sacrament v-for="(el, index) in responseData" :key="index" :data="el" @selectOne="selectOne" :selected="oneSelected"/>
+                <div class="h-full overflow-auto flex flex-wrap" :class="{'w-full': !oneSelected, 'w-1/6': oneSelected}">
+                    <sacrament v-for="(el, index) in data" :key="index" :data="el" @selectOne="selectOne" :selected="oneSelected"/>
                 </div>
 
                 <div v-if="oneSelected" class="h-full flex flex-1 min-w-0 flex flex-col px-6">

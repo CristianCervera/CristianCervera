@@ -5,4 +5,17 @@
         font-size: 0.8333333333vw;
     }
 
+    ::-webkit-scrollbar {
+        width: .45rem;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: transparent !important;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #58957f; 
+        border-radius: 10px;
+    }
+
 @tailwind utilities;
