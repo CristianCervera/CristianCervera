@@ -27,6 +27,10 @@ http.interceptors.request.use(
 Vue.use(VueAxios, http);
 Vue.axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
 const moment = require('moment')
 require('moment/locale/es')
 Vue.use(require('vue-moment'), {moment});

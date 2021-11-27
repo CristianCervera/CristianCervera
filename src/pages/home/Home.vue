@@ -2,7 +2,7 @@
     
     <div class="h-full w-full bg-body flex flex-row justify-center items-center p-4 overflow-hidden">
 
-        <div class="h-full w-2/12 mr-4 flex flex-col">
+        <div class="h-full w-2/12 mr-2 flex flex-col">
 
             <div class="h-56 rounded-lg w-full bg-module flex flex-col justify-center items-center relative px-4">
 

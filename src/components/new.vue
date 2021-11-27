@@ -1,6 +1,8 @@
 <template>
 
-    <div class="h-full w-full bg-module flex flex-col p-4">
+    <div class="h-full w-full bg-module flex flex-col p-4 relative">
+
+        <loader :loading="loading" />
 
         <div class="h-16 w-full flex flex-row justify-start items-center border-b border-aux">
             <span class="text-xl text-white font-semibold uppercase">Añadir {{option.title}}</span>
@@ -57,7 +59,7 @@
                                     <span class="text-white text-lg mr-4">Sexo</span>
                                 </div>
                                 <div class="h-full flex flex-1 min-w-0">
-                                    <select name="dimensionfilter" v-model="form.sex" class="h-full w-full rounded-lg bg-body text-white">
+                                    <select name="dimensionfilter" v-model="form.sex" class="h-full w-full rounded-lg bg-body text-white px-2">
                                         <option v-for="(el,index) in geners" :key="index" :value="el.value">{{el.name}}</option>
                                     </select>
                                 </div>
@@ -457,52 +459,57 @@
 </template>
 
 <script>
+import loader from './loader.vue';
+
 export default {
     props:['option'],
+    components:{
+        loader
+    },
     data(){
         return{
             form:{
-                parochialChurch: "string",
-                neighborhood: "string",
-                province: "Valencia",
-                baptismDate: "2021-10-14T14:07:51.360Z",
-                sex: "masc",
-                name: "Cristian",
-                firstName: "Cervera",
-                lastName: "Perez",
-                birthdate: "2021-10-14T14:07:51.360Z",
-                birthHour: "string",
-                birthAddress: {
-                    street: "string",
-                    number: "string",
-                    door: "string"
+                "parochialChurch": "string",
+                "neighborhood": "string",
+                "province": "string",
+                "baptismDate": "2021-11-27T11:46:27.701Z",
+                "sex": "string",
+                "name": "string",
+                "firstName": "string",
+                "lastName": "string",
+                "birthdate": "2021-11-27T11:46:27.701Z",
+                "birthHour": "string",
+                "birthAddress": {
+                    "street": "string",
+                    "number": "string",
+                    "door": "string"
                 },
-                parents: {
-                    father: {
-                    name: "string",
-                    firstName: "string",
-                    lastName: "string",
-                    townOfOrigin: "string"
+                "parents": {
+                    "father": {
+                    "name": "string",
+                    "firstName": "string",
+                    "lastName": "string",
+                    "townOfOrigin": "string"
                     },
-                    mother: {
-                    name: "string",
-                    firstName: "string",
-                    lastName: "string",
-                    townOfOrigin: "string"
+                    "mother": {
+                    "name": "string",
+                    "firstName": "string",
+                    "lastName": "string",
+                    "townOfOrigin": "string"
                     },
-                    weddingTown: "string",
-                    parish: "string"
+                    "weddingTown": "string",
+                    "parish": "string"
                 },
-                grandparents: {
-                    grandfather: {
-                    name: "string",
-                    firstName: "string",
-                    lastName: "string"
+                "grandparents": {
+                    "grandfather": {
+                    "name": "string",
+                    "firstName": "string",
+                    "lastName": "string"
                     },
-                    grandmother: {
-                    name: "string",
-                    firstName: "string",
-                    lastName: "string"
+                    "grandmother": {
+                    "name": "string",
+                    "firstName": "string",
+                    "lastName": "string"
                     }
                 }
             },
@@ -510,7 +517,8 @@ export default {
             geners:[
                 {name:'Masculino', value: 'masc'},
                 {name:'Femenino', value: 'fem'}
-            ]
+            ],
+            loading: false
         }
     },
     methods:{
@@ -519,7 +527,14 @@ export default {
             this.$emit('closeModal')
         },
         save(){
-            this.closeModal();
+            
+            this.loading = true;
+
+            this.axios.post('/'+this.option.value).then( response => {
+                this.loadin = false;
+                this.closeModal();
+            })
+
         }
     }
 }

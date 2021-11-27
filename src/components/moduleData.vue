@@ -34,7 +34,7 @@
             <div class="flex-1 min-h-0 overflow-hidden flex flex-row py-6 w-full">
 
                 <div class="h-full overflow-auto flex flex-wrap" :class="{'w-full': !oneSelected, 'w-1/6': oneSelected}">
-                    <sacrament v-for="(el, index) in 50" :key="index" :data="el" @selectOne="selectOne" :selected="oneSelected"/>
+                    <sacrament v-for="(el, index) in responseData" :key="index" :data="el" @selectOne="selectOne" :selected="oneSelected"/>
                 </div>
 
                 <div v-if="oneSelected" class="h-full flex flex-1 min-w-0 flex flex-col px-6">
@@ -87,11 +87,11 @@ export default {
     },
     methods:{
         load(){
-            // this.loading = true;
-            // this.axios.get('/'+this.option.value).then( response => {
-            //     this.responseData = response.data;
-            //     this.loading = false;
-            // })
+            this.loading = true;
+            this.axios.get('/'+this.option.value).then( response => {
+                this.responseData = response.data;
+                this.loading = false;
+            })
         },
         closeModal(){
             this.newModal = !this.newModal
